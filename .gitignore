@@ -1,3 +1,7 @@
 node_modules
 dist
 .DS_Store
+
+# soundtrack files stay local (copyrighted audio)
+src/music/*
+!src/music/README.md

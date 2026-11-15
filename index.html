@@ -25,10 +25,13 @@
       <svg viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0-34C10-14 14-10 34 0C14 10 10 14 0 34C-10 14-14 10-34 0C-14-10-10-14 0-34Z" /><circle r="5" /></svg>
       <span>An Almanac of Mondstadt</span>
     </a>
-    <button class="chrome__sound" type="button" aria-pressed="false">
-      <span class="chrome__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span class="chrome__soundlabel">Wind off</span>
-    </button>
+    <div class="chrome__audio">
+      <button class="chrome__sound" type="button" aria-pressed="false" aria-label="Play music">
+        <span class="chrome__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="chrome__soundlabel">Sound off</span>
+      </button>
+      <button class="chrome__next" type="button" aria-label="Next track" hidden><svg viewBox="0 0 16 12" aria-hidden="true"><path d="M1 1l6 5-6 5zM8 1l6 5-6 5zM15 1v10" /></svg></button>
+    </div>
   </header>
   <nav class="rail" aria-label="Chapters"><ol></ol></nav>
 

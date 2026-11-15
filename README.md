@@ -18,6 +18,10 @@ npm run build    # static site in dist/
 - **Windsong** – a playable 21-string lyre (mouse, touch, or the `QWERTYU / ASDFGHJ / ZXCVBNM` rows). All audio is synthesised in the browser.
 - **Calendar** – the three great festivals.
 
+## Soundtrack
+
+Put audio files (`.mp3`, `.ogg`, `.m4a`, `.wav`) in `src/music/`. They are discovered automatically and played in shuffled order, starting on your first click. The header shows the current title, with pause and skip controls; the music dips while you play the lyre. The audio files are git-ignored, so copy them in after cloning.
+
 ## Adding artwork
 
 Everything on the page is drawn in code, so no assets are required. To add character portraits, put files in `public/art/` named after the character (`venti.png`, `jean.webp`, …). They are picked up automatically.

@@ -1,5 +1,6 @@
 import { LYRE_ROWS, SOLFEGE, TUNE } from '../data.js';
 import { pluck } from '../audio.js';
+import { duck } from '../music.js';
 
 const SEMIS = [0, 2, 4, 5, 7, 9, 11];
 const W = 840, H = 150;
@@ -46,6 +47,7 @@ export function initLyre(root) {
     const n = notes[k];
     if (!n) return;
     pluck(n.freq, when);
+    duck();
     const fire = () => {
       n.string.amp = 9; n.string.t0 = performance.now(); n.string.g.classList.add('is-on');
       n.btn.classList.remove('is-hit'); void n.btn.offsetWidth; n.btn.classList.add('is-hit');

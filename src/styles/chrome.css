@@ -28,6 +28,12 @@
 .chrome__mark svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 4; transition: transform 1.2s var(--ease); }
 .chrome__mark svg circle { fill: currentColor; stroke: none; }
 .chrome__mark:hover svg { transform: rotate(180deg); }
+.chrome__audio { display: flex; align-items: center; gap: 1.1rem; }
+.chrome__soundlabel { max-width: 46vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chrome__soundlabel.is-title { font-family: var(--f-display); font-style: italic; font-size: 1.08rem; letter-spacing: .02em; text-transform: none; }
+.chrome__next { padding: .5rem .2rem; opacity: .7; transition: opacity .3s, transform .5s var(--ease); }
+.chrome__next:hover { opacity: 1; transform: translateX(3px); }
+.chrome__next svg { width: 15px; height: 11px; fill: currentColor; stroke: currentColor; stroke-width: 1; stroke-linejoin: round; }
 .chrome__sound { display: flex; align-items: center; gap: .7rem; font-family: var(--f-caps); font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; padding: .4rem 0; }
 .chrome__bars { display: flex; align-items: center; gap: 3px; height: 14px; }
 .chrome__bars i { width: 1.5px; height: 3px; background: currentColor; transition: height .4s; }

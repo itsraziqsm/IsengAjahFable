@@ -38,7 +38,7 @@ export function pluck(freq, when = 0) {
 }
 
 let wind = null;
-export function setWind(on) {
+export function setWind(on, level = 0.75) {
   const c = audio();
   if (on && !wind) {
     const len = c.sampleRate * 4;
@@ -59,5 +59,5 @@ export function setWind(on) {
     src.start(); lfo.start(); swell.start();
     wind = g;
   }
-  if (wind) wind.gain.linearRampToValueAtTime(on ? 0.75 : 0, c.currentTime + 1.2);
+  if (wind) wind.gain.linearRampToValueAtTime(on ? level : 0, c.currentTime + 1.2);
 }

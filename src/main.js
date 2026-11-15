@@ -21,6 +21,7 @@ import { initWinds } from './sections/winds.js';
 import { initPeople } from './sections/people.js';
 import { initLyre } from './sections/lyre.js';
 import { setWind } from './audio.js';
+import { TRACKS, playMusic, pauseMusic, nextMusic, onMusic } from './music.js';
 import { FESTIVALS } from './data.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -167,14 +168,36 @@ function choreograph() {
   ScrollTrigger.create({ trigger: '.outro', start: 'top center', onToggle: (st) => railEl.classList.toggle('is-hidden', st.isActive) });
 }
 
-// ---------- sound
+// ---------- sound: shuffled soundtrack over a bed of wind
 const soundBtn = $('.chrome__sound');
-soundBtn.addEventListener('click', () => {
-  const on = soundBtn.getAttribute('aria-pressed') !== 'true';
+const soundLabel = $('.chrome__soundlabel');
+const nextBtn = $('.chrome__next');
+const hasMusic = TRACKS.length > 0;
+let soundOn = false;
+const setSound = (on) => {
+  soundOn = on;
   soundBtn.setAttribute('aria-pressed', on);
-  $('.chrome__soundlabel').textContent = on ? 'Wind on' : 'Wind off';
-  setWind(on);
-});
+  soundBtn.setAttribute('aria-label', on ? 'Pause music' : 'Play music');
+  setWind(on, hasMusic ? 0.22 : 0.75);
+  if (hasMusic) on ? playMusic() : pauseMusic();
+  else soundLabel.textContent = on ? 'Wind on' : 'Wind off';
+};
+if (hasMusic) {
+  nextBtn.hidden = TRACKS.length < 2;
+  onMusic(({ playing, title }) => {
+    soundLabel.textContent = playing && title ? title : 'Sound off';
+    soundLabel.classList.toggle('is-title', playing && !!title);
+    if (!playing && soundOn) setSound(false); // autoplay was refused
+  });
+  nextBtn.addEventListener('click', () => { if (!soundOn) setSound(true); else nextMusic(); });
+  // browsers only allow audio after a gesture: begin on the first one
+  const first = (e) => {
+    removeEventListener('pointerdown', first, true); removeEventListener('keydown', first, true);
+    if (!soundOn && !e.target.closest?.('.chrome__audio')) setSound(true);
+  };
+  addEventListener('pointerdown', first, true); addEventListener('keydown', first, true);
+}
+soundBtn.addEventListener('click', () => setSound(!soundOn));
 
 // ---------- curtain up
 const loader = $('.loader');
