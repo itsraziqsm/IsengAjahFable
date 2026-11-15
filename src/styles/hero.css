@@ -1,0 +1,113 @@
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(var(--skyTop, #232f66), var(--horizon, #ffc56f) 60%, var(--water, #6c5a8e));
+  color: var(--ink, #fff);
+  --glow: .7;
+}
+.hero__sky, .hero__seeds, .hero__layer { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero__layer { will-change: transform; overflow: visible; }
+.hero__seeds { pointer-events: none; }
+
+/* ---- scene paint: lit / shade pairs, hazed by distance (--fog) */
+.hero__city { --fog: 0; --teal: color-mix(in srgb, var(--leaf) 30%, #3f93a8); }
+.hero__city .w  { fill: color-mix(in srgb, var(--wall), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .ws { fill: color-mix(in srgb, var(--wallShade), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .r  { fill: color-mix(in srgb, var(--roof), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .rs { fill: color-mix(in srgb, var(--roofShade), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .s  { fill: color-mix(in srgb, var(--stone), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .ss { fill: color-mix(in srgb, var(--stoneShade), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .t  { fill: color-mix(in srgb, color-mix(in srgb, var(--teal), var(--wall) 22%), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .ts { fill: color-mix(in srgb, color-mix(in srgb, var(--teal), var(--roofShade) 55%), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .k  { fill: var(--rock); }
+.hero__city .ks { fill: var(--rockShade); }
+.hero__city .kl { fill: color-mix(in srgb, var(--rock), var(--stone) 35%); }
+.hero__city .l  { fill: color-mix(in srgb, var(--leaf), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .ls { fill: color-mix(in srgb, var(--leafShade), var(--haze) calc(var(--fog) * 100%)); }
+.hero__city .soft { opacity: .45; }
+.hero__city .beam { fill: none; stroke: var(--wallShade); stroke-width: .9; opacity: .55; }
+.hero__city .beam-fill { fill: var(--wallShade); opacity: .7; }
+.hero__city .mortar { fill: none; stroke: var(--stoneShade); stroke-width: .8; opacity: .6; }
+.hero__city .crack { fill: none; stroke: var(--rockShade); stroke-width: 1.4; opacity: .8; }
+.hero__city .door { fill: var(--rockShade); }
+.hero__city .tracery { fill: none; stroke: var(--stoneShade); stroke-width: 1; }
+.hero__city .spar { fill: none; stroke: var(--stoneShade); stroke-width: 1.3; stroke-linecap: round; }
+.hero__city .sail { fill: color-mix(in srgb, var(--wall), var(--haze) 20%); opacity: .82; }
+.hero__city .lattice { fill: none; stroke: var(--wallShade); stroke-width: .6; opacity: .7; }
+.hero__city .win { fill: color-mix(in srgb, var(--wallShade), var(--rockShade) 55%); }
+.hero__city .win.on {
+  fill: color-mix(in srgb, #ffd98c calc(var(--glow) * 100%), color-mix(in srgb, var(--wallShade), var(--rockShade) 55%));
+}
+.hero__city .win.rose { fill: color-mix(in srgb, #9fe8d6 calc(var(--glow) * 100%), var(--stoneShade)); }
+.hero__city .lamp { fill: color-mix(in srgb, #ffd98c calc(var(--glow) * 100%), var(--stoneShade)); filter: drop-shadow(0 0 calc(var(--glow) * 4px) rgb(255 190 96 / var(--glow))); }
+.hero__city .mist { fill: var(--haze); opacity: .35; filter: blur(6px); }
+.hero__city .reflection { opacity: .5; }
+.hero__city .reflection .blades { animation: none; }
+.hero__city .reflection .lamp { filter: none; }
+.blades { animation: spin 14s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.hero__fg .fgf { fill: var(--fg); }
+.hero__fg .fgr { fill: var(--fgRim); }
+.hero__fg .blade { fill: var(--fg); }
+.hero__fg .blade.rim { fill: var(--fgRim); }
+.hero__fg .stem { fill: none; stroke: var(--fgRim); stroke-width: 1.3; }
+.hero__fg .puff { fill: var(--ink); opacity: .2; }
+.hero__fg .rays { fill: none; stroke: var(--ink); stroke-width: .7; opacity: .85; stroke-linecap: round; }
+.sway { transform-origin: var(--o); animation: sway 5.5s ease-in-out infinite alternate; animation-delay: var(--d); }
+@keyframes sway { from { transform: skewX(calc(var(--a) * -1)); } to { transform: skewX(calc(var(--a) * 1.6)); } }
+
+/* ---- title (sits behind the town, so the spire cuts through it) */
+.hero__title {
+  position: absolute; left: 0; right: 0; top: clamp(3.4rem, 10.5svh, 7rem);
+  text-align: center; pointer-events: none;
+  text-shadow: 0 2px 34px rgb(10 20 40 / .4);
+}
+.hero .rule { margin-bottom: 1rem; }
+.hero__over { font-family: var(--f-caps); font-size: clamp(.62rem, .5rem + .42vw, .9rem); letter-spacing: .62em; text-indent: .62em; text-transform: uppercase; }
+.hero h1 {
+  font-family: var(--f-display); font-weight: 500;
+  font-size: clamp(2.1rem, 8.4vw, 9.4rem);
+  line-height: 1; letter-spacing: .15em; text-indent: .15em; text-transform: uppercase;
+  margin-top: .1em;
+  display: flex; justify-content: center; align-items: baseline;
+}
+.hero h1 span { display: inline-block; }
+.hero h1 span:first-child { font-size: 1.24em; line-height: .8; }
+
+/* ---- sundial */
+.dial {
+  position: absolute; right: clamp(1rem, 3.2vw, 3rem); bottom: clamp(1rem, 3.2vw, 3rem); z-index: 4;
+  width: clamp(104px, 9.5vw, 138px); aspect-ratio: 1; cursor: grab; touch-action: none; user-select: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(8 18 30 / .5) 55%, rgb(8 18 30 / .18) 72%, transparent 73%);
+  color: #f6ead0;
+}
+.dial:active { cursor: grabbing; }
+.dial svg { width: 100%; height: 100%; overflow: visible; }
+.dial__ring { fill: none; stroke: currentColor; stroke-width: .6; opacity: .75; }
+.dial__ticks path { stroke: currentColor; stroke-width: .7; opacity: .7; }
+.dial__sun, .dial__moon { fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; opacity: .55; transition: opacity .6s; }
+.dial__moon { fill: currentColor; stroke: none; opacity: .35; }
+.dial.is-night .dial__moon { opacity: .95; }
+.dial:not(.is-night) .dial__sun { opacity: .95; }
+.dial__hand { transform-origin: 0 0; }
+.dial__hand path { fill: var(--gold-hi); stroke: #fff8e4; stroke-width: .5; filter: drop-shadow(0 0 3px rgb(255 220 150 / .9)); }
+.dial__read { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; pointer-events: none; }
+.dial__time { font-family: var(--f-display); font-size: 1.45rem; line-height: 1; letter-spacing: .04em; font-variant-numeric: lining-nums tabular-nums; }
+.dial__name { font-family: var(--f-caps); font-size: .5rem; letter-spacing: .3em; text-indent: .3em; text-transform: uppercase; margin-top: .35rem; opacity: .85; }
+.hero__hint {
+  position: absolute; z-index: 4; right: calc(clamp(1rem, 3.2vw, 3rem) + clamp(104px, 9.5vw, 138px) + 1rem); bottom: calc(clamp(1rem, 3.2vw, 3rem) + 1.1rem);
+  font-family: var(--f-display); font-style: italic; font-size: 1rem; color: #f6ead0; opacity: .8; text-align: right; max-width: 12rem; line-height: 1.2;
+}
+.hero__scroll {
+  position: absolute; z-index: 4; left: 50%; bottom: 1.6rem; transform: translateX(-50%);
+  display: grid; justify-items: center; gap: .6rem; color: #f6ead0;
+  font-family: var(--f-caps); font-size: .6rem; letter-spacing: .45em; text-indent: .45em; text-transform: uppercase;
+}
+.hero__scroll i { width: 1px; height: 2.6rem; background: linear-gradient(currentColor, transparent); animation: drip 2.4s var(--ease) infinite; transform-origin: top; }
+@keyframes drip { 0% { transform: scaleY(0); } 55% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+@media (max-width: 640px) { .hero__hint { display: none; } }

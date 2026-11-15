@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mondstadt — The City of Freedom</title>
+  <meta name="description" content="An illustrated almanac of Mondstadt, the city of wind and song." />
+  <meta name="theme-color" content="#0b1c2a" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="loader" aria-hidden="true">
+    <svg class="loader__sigil" viewBox="-50 -50 100 100">
+      <circle r="44" pathLength="1" />
+      <path pathLength="1" d="M0-34C10-14 14-10 34 0C14 10 10 14 0 34C-10 14-14 10-34 0C-14-10-10-14 0-34Z" />
+      <path pathLength="1" d="M-20-20C-6-14 6-14 20-20C14-6 14 6 20 20C6 14-6 14-20 20C-14 6-14-6-20-20Z" />
+      <circle r="4" pathLength="1" />
+    </svg>
+    <p class="loader__word">Mondstadt</p>
+    <p class="loader__line"><i></i></p>
+  </div>
+
+  <header class="chrome">
+    <a class="chrome__mark" href="#top" aria-label="Back to top">
+      <svg viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0-34C10-14 14-10 34 0C14 10 10 14 0 34C-10 14-14 10-34 0C-14-10-10-14 0-34Z" /><circle r="5" /></svg>
+      <span>An Almanac of Mondstadt</span>
+    </a>
+    <button class="chrome__sound" type="button" aria-pressed="false">
+      <span class="chrome__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="chrome__soundlabel">Wind off</span>
+    </button>
+  </header>
+  <nav class="rail" aria-label="Chapters"><ol></ol></nav>
+
+  <main id="app">
+    <section class="hero" id="top" data-section="Arrival">
+      <canvas class="hero__sky" aria-hidden="true"></canvas>
+      <div class="hero__title">
+        <div class="rule" aria-hidden="true"><i></i><b></b><i></i></div>
+        <p class="hero__over">The City of Freedom</p>
+        <h1 aria-label="Mondstadt"><span>M</span><span>o</span><span>n</span><span>d</span><span>s</span><span>t</span><span>a</span><span>d</span><span>t</span></h1>
+      </div>
+      <svg class="hero__layer hero__city" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+      <svg class="hero__layer hero__fg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+      <canvas class="hero__seeds" aria-hidden="true"></canvas>
+
+      <div class="dial" role="slider" tabindex="0" aria-label="Time of day" aria-valuemin="0" aria-valuemax="24" aria-valuenow="17.5">
+        <svg viewBox="-60 -60 120 120" aria-hidden="true">
+          <circle class="dial__ring" r="52" />
+          <g class="dial__ticks"></g>
+          <path class="dial__sun" d="M0-41.5a4.5 4.5 0 1 0 .01 0M0-49.5v-3M0-30.5v-3M-8-41.5h-3M11-41.5h-3M-5.7-47.2l-2-2M7.7-33.8l-2-2M5.7-47.2l2-2M-7.7-33.8l2-2" />
+          <path class="dial__moon" d="M2.5 36.5a5.5 5.5 0 1 0 0 10 6.4 6.4 0 0 1 0-10z" />
+          <g class="dial__hand"><path d="M0-52l3.2 5.5L0-41l-3.2-5.5z" /></g>
+        </svg>
+        <div class="dial__read"><span class="dial__time">17:30</span><span class="dial__name">Dusk</span></div>
+      </div>
+      <p class="hero__hint">Turn the dial to move the sun</p>
+      <a class="hero__scroll" href="#prologue"><span>Descend</span><i></i></a>
+    </section>
+
+    <!-- I · PROLOGUE -->
+    <section class="paper prologue" id="prologue" data-section="Prologue">
+      <div class="paper__grain" aria-hidden="true"></div>
+      <div class="wrap prologue__grid">
+        <header class="prologue__head">
+          <p class="kicker" data-reveal><b>I</b> Prologue</p>
+          <h2 class="display" data-split>A city that kneels<br /><em>to no throne.</em></h2>
+        </header>
+        <div class="prologue__body">
+          <p class="lede dropcap" data-reveal>Twenty-six centuries ago this land was ice, and its only city sat inside a wall of storm raised by a god who could not tell obedience from love. A nameless bard, a red-haired knight, an archer and a wind spirit no bigger than a hand decided that was not good enough.</p>
+          <p data-reveal>They won. The spirit took the shape of the bard who did not live to see it, blew the snow off the mountains, and then did the strangest thing a god has ever done with a throne: he declined it. Mondstadt has governed itself ever since, badly at times and bravely at others, and has never once asked him to come back and rule.</p>
+          <p data-reveal>What follows is a walker’s almanac of the place. Read it in any order. The wind does.</p>
+        </div>
+        <aside class="prologue__mill" aria-hidden="true">
+          <svg viewBox="-120 -120 240 320">
+            <g class="ink">
+              <path d="M-26 190L-15 6H15L26 190Z" /><path d="M-22 120H22M-19 60H19" /><path d="M-18 8L0-22L18 8" /><path d="M-5 190v-26a5 5 0 0 1 10 0v26" /><circle cx="0" cy="84" r="5" />
+              <g class="mill__blades">
+                <g><path d="M0 0V-108" /><path d="M3-26H24V-104H3" /><path d="M3-52H24M3-78H24M13.5-26V-104" /></g>
+                <g transform="rotate(90)"><path d="M0 0V-108" /><path d="M3-26H24V-104H3" /><path d="M3-52H24M3-78H24M13.5-26V-104" /></g>
+                <g transform="rotate(180)"><path d="M0 0V-108" /><path d="M3-26H24V-104H3" /><path d="M3-52H24M3-78H24M13.5-26V-104" /></g>
+                <g transform="rotate(270)"><path d="M0 0V-108" /><path d="M3-26H24V-104H3" /><path d="M3-52H24M3-78H24M13.5-26V-104" /></g>
+              </g>
+              <circle r="4" class="ink-fill" />
+            </g>
+          </svg>
+        </aside>
+        <dl class="ledger">
+          <div data-reveal><dt>Archon</dt><dd>Barbatos <span>Lord of Wind</span></dd></div>
+          <div data-reveal><dt>Ideal</dt><dd>Freedom</dd></div>
+          <div data-reveal><dt>Element</dt><dd>Anemo</dd></div>
+          <div data-reveal><dt>Order</dt><dd>Knights of Favonius</dd></div>
+          <div data-reveal><dt>Known for</dt><dd>Wine, song, windmills</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- II · ATLAS -->
+    <section class="paper atlas" id="atlas" data-section="Atlas">
+      <div class="paper__grain" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="atlas__head">
+          <p class="kicker" data-reveal><b>II</b> Atlas</p>
+          <h2 class="display" data-split>The lay <em>of the land</em></h2>
+          <p class="atlas__intro" data-reveal>Eight places worth the walk. Choose one on the map or from the index.</p>
+        </header>
+        <div class="atlas__grid">
+          <figure class="atlas__map" data-reveal><svg viewBox="0 0 1000 720" role="img" aria-label="Hand-drawn map of the Mondstadt region"></svg></figure>
+          <div class="atlas__side">
+            <ol class="atlas__index"></ol>
+            <article class="atlas__card" aria-live="polite">
+              <p class="atlas__kind"></p>
+              <h3 class="atlas__name"></h3>
+              <p class="atlas__text"></p>
+              <p class="atlas__note"></p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- III · THE FOUR WINDS -->
+    <section class="winds" id="winds" data-section="Four Winds">
+      <div class="winds__track">
+        <div class="winds__panel winds__intro">
+          <p class="kicker"><b>III</b> The Four Winds</p>
+          <h2 class="display">Four guardians,<br /><em>one promise.</em></h2>
+          <p>Barbatos left no king behind him. He left four winds, each bound to a quarter of the sky, and trusted them to do what he would not: stay.</p>
+          <p class="winds__cue caps">Keep scrolling <i></i></p>
+        </div>
+      </div>
+      <div class="winds__progress" aria-hidden="true"><i></i></div>
+    </section>
+
+    <!-- IV · PEOPLE -->
+    <section class="people" id="people" data-section="People">
+      <canvas class="people__stars" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <header class="people__head">
+          <p class="kicker" data-reveal><b>IV</b> People</p>
+          <h2 class="display" data-split>Those the wind <em>keeps close</em></h2>
+        </header>
+        <div class="people__grid">
+          <ol class="people__list" role="tablist" aria-label="Residents of Mondstadt"></ol>
+          <figure class="people__sky">
+            <svg viewBox="0 0 100 100" aria-hidden="true"></svg>
+            <img class="people__art" alt="" hidden />
+            <figcaption><span class="caps">Constellation</span><em class="people__sign"></em></figcaption>
+          </figure>
+          <article class="people__card" role="tabpanel" aria-live="polite">
+            <p class="people__title caps"></p>
+            <h3 class="people__name"></h3>
+            <p class="people__text"></p>
+            <dl class="people__facts">
+              <div><dt>Vision</dt><dd class="people__element"></dd></div>
+              <div><dt>Weapon</dt><dd class="people__weapon"></dd></div>
+              <div><dt>Station</dt><dd class="people__role"></dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- V · LYRE -->
+    <section class="lyre" id="lyre" data-section="Windsong">
+      <div class="wrap lyre__grid">
+        <header class="lyre__head">
+          <p class="kicker" data-reveal><b>V</b> Windsong</p>
+          <h2 class="display" data-split>Borrow <em>the bard’s lyre</em></h2>
+          <p data-reveal>Three octaves, twenty-one strings. Click them, or use the three letter rows of your keyboard, exactly as they are laid out here.</p>
+          <div class="lyre__actions" data-reveal>
+            <button class="btn lyre__play" type="button"><i></i><span>Play something for me</span></button>
+          </div>
+        </header>
+        <div class="lyre__instrument" data-reveal>
+          <svg class="lyre__strings" viewBox="0 0 840 150" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="lyre__keys" role="group" aria-label="Lyre keys"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VI · CALENDAR -->
+    <section class="paper feasts" id="calendar" data-section="Calendar">
+      <div class="paper__grain" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="feasts__head">
+          <p class="kicker" data-reveal><b>VI</b> Calendar</p>
+          <h2 class="display" data-split>A year measured <em>in festivals</em></h2>
+        </header>
+        <ol class="feasts__list"></ol>
+      </div>
+    </section>
+
+    <footer class="outro" id="outro">
+      <svg class="outro__ridge" viewBox="0 0 1600 220" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div class="wrap">
+        <div class="rule" aria-hidden="true"><i></i><b></b><i></i></div>
+        <p class="outro__bless">May the wind lead you.</p>
+        <a class="btn" href="#top"><i></i><span>Back to the lake</span></a>
+        <p class="outro__fine">A fan-made tribute, built for the love of the place. Mondstadt, its people and its stories belong to Genshin Impact © HoYoverse. This page is not affiliated with or endorsed by HoYoverse.</p>
+      </div>
+    </footer>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
